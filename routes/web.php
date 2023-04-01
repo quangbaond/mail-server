@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Auth::routes();
+Route::view('/', 'lanling-page');
+Route::get('/check-email', function () {
     return view('welcome');
-});
+})->middleware('auth');
 Route::get('/oauth/gmail', function (){
     return LaravelGmail::redirect();
 });
