@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 
 
 /*
@@ -19,6 +19,6 @@ use App\Http\Controllers\HomeController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/check-email', [HomeController::class, 'index'])->name('checkemail');
+Route::post('/check-email', [MailController::class, 'index'])->name('checkemail');
 //get-info-email
-Route::post('/get-info-email', [HomeController::class, 'getInfoEmail'])->name('getInfoEmail');
+Route::post('/get-info-email', [MailController::class, 'getInfoEmail'])->name('getInfoEmail');
