@@ -32,9 +32,9 @@ class HomeController extends Controller
         $keyword = $request->get('keyword', '');
         $status = $request->get('status', '');
         if($status == 'active'){
-           $users = User::where('status', 1)->paginate(10);
+           $users = User::where('status', 1)->where('id' , '!=', 1)->orderBy('created_at', 'desc')->paginate(10);
         }else if($status == 'inactive'){
-              $users = User::where('status', 0)->paginate(10);
+              $users = User::where('status', 0)->where('id' , '!=', 1)->orderBy('created_at', 'desc')->paginate(10);
         }else {
             $users = User::paginate(10);
         }
@@ -42,9 +42,10 @@ class HomeController extends Controller
         if ($keyword) {
             $users = User::where('name', 'LIKE', "%$keyword%")
                 ->orWhere('email', 'LIKE', "%$keyword%")
+                ->where('id' , '!=', 1)
                 ->paginate(10);
         } else {
-            $users = User::paginate(10);
+            $users = User::orderBy('created_at', 'desc')->where('id' , '!=', 1)->paginate(10);
         }
 
         return view('admin.user', compact('users', 'keyword', 'status'));
