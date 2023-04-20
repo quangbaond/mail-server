@@ -22906,7 +22906,8 @@ __webpack_require__.r(__webpack_exports__);
         // Optional parameters
       });
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/check-email', {
-        email: this.email
+        email: this.email,
+        _token: Token
       }).then(function (response) {
         _this.listEmail = response.data.data;
         _this.isCheck = true;

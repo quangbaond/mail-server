@@ -89,7 +89,8 @@ export default {
             // Optional parameters
             });
             axios.post('/api/check-email', {
-                email: this.email
+                email: this.email,
+                _token: Token
             }).then(response => {
                 this.listEmail = response.data.data;
                 this.isCheck = true;

@@ -37,7 +37,25 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="/login" >{{ Auth::check() ? Auth::user()->name : 'Đăng nhập' }}</a>
-              </li>
+            </li>
+            @if(Auth::check() && Auth::user()->role == '1')
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/admin/users" >Quản trị</a>
+            </li>
+            @endif
+            {{-- //logout --}}
+            @if(Auth::check())
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+            @endif
           </ul>
         </div>
     </nav>

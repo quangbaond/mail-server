@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use LaravelGmail;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class MailController extends Controller
 {
     public function index(Request $request)
     {
