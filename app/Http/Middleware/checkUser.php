@@ -16,7 +16,7 @@ class checkUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->user()->role != 1){
+        if($request->user()->status != '1'){
             return redirect()->route('home');
         }
         return $next($request);
